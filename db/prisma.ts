@@ -4,10 +4,6 @@ import { PrismaNeon } from '@prisma/adapter-neon';
 import { PrismaClient } from '@prisma/client';
 import ws from 'ws';
 
-// إعداد WebSocket لاستخدام Neon اتصال WebSocket
-// (لو حابب تستخدم WebSocket)
-// neonConfig غير مستخدم هنا فراح نحذف السطر اللي يخصه
-
 const connectionString = process.env.DATABASE_URL!;
 
 
@@ -18,7 +14,6 @@ const poolConfig = {
 
 const adapter = new PrismaNeon(poolConfig);
 
-// إنشاء PrismaClient مع adapter، مع امتداد لتحويل الحقول إلى نصوص
 export const prisma = new PrismaClient({ adapter }).$extends({
   result: {
     product: {
@@ -33,7 +28,7 @@ export const prisma = new PrismaClient({ adapter }).$extends({
         },
       },
     },
-    // باقي التعليقات عندك محفوظة لو حبيت تفعلهم لاحقًا
+
   },
 });
 
